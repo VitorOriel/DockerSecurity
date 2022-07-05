@@ -1,6 +1,7 @@
 name: Docker Image Scan
 
-on: pull_requests
+on:
+  pull_requests:
 
 jobs:
   security:
