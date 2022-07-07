@@ -7,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Format Docker image name
+      run: echo ::set-env name=IMAGE_REPOSITORY::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
     - name: Build a Docker image
-      run: docker build -t ${{ github.repository }}:latest .
+      run: docker build -t ${{ env.IMAGE_REPOSITORY }}:latest .
 
     - name: Run Snyk to check Docker image for vulnerabilities
       uses: snyk/actions/docker@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        image: ${{ github.repository }}:latest
+        image: ${{ env.IMAGE_REPOSITORY }}:latest
