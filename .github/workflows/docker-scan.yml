@@ -6,9 +6,13 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+    - name: Build a Docker image
+      run: docker build -t ${{ github.repository }}:latest .
+
     - name: Run Snyk to check Docker image for vulnerabilities
       uses: snyk/actions/docker@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        args: --file=Dockerfile
+        image: ${{ github.repository }}:latest
