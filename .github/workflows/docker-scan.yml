@@ -2,9 +2,6 @@ name: Docker Image Scan
 
 on: pull_request
 
-env:
-
-
 jobs:
   security:
     runs-on: ubuntu-latest
