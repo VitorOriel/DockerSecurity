@@ -2,13 +2,16 @@ name: Docker Image Scan
 
 on: pull_request
 
+env:
+
+
 jobs:
   security:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Format Docker image name
-      run: echo ::set-env name=IMAGE_REPOSITORY::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+      run: echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
     - name: Build a Docker image
       run: docker build -t ${{ env.IMAGE_REPOSITORY }}:latest .
 
