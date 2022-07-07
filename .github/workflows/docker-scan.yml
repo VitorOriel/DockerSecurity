@@ -11,4 +11,4 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        image: vulnerables/web-dvwa:latest
+        args: --file=Dockerfile
