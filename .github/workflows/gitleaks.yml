@@ -19,8 +19,8 @@ jobs:
           GITLEAKS_CONFIG: gitleaks.toml
 
       - name: Upload SARIF file
-        run: ls -la
         uses: github/codeql-action/upload-sarif@v2
+        run: ls -la
         with:
           sarif_file: gitleaks-results.sarif
           category: gitleaks
