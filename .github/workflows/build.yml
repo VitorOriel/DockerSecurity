@@ -1,0 +1,13 @@
+name: Docker Build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Format Docker image name
+      run: echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
+    - name: Build a Docker image
+      run: docker build -t ${{ env.IMAGE_REPOSITORY }}:latest .
