@@ -1,0 +1,6 @@
+title = "gitleaks config"
+
+[[rules]]
+    description = "General password in dockerfile"
+    regex = '''(^ENV)(.*)(PASSWORD)(\ )(?!\$)(.*)''
+    tags = ["password", "secret", "dockerfile"]
