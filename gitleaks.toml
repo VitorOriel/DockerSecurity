@@ -2,5 +2,5 @@ title = "gitleaks config"
 
 [[rules]]
     description = "General leak in dockerfile"
-    regex = '''(^ENV)(.*)(DATABASE|USER|PASSWORD)(\ )(.?$|[^\$].*)$'''
-    tags = ["password", "secret", "dockerfile"]
+    regex = '''^(ENV)(.*)(DATABASE|USER|PASSWORD)(\ )(.?$|[^\$].*)'''
+    tags = ["password", "secret", "Docker"]
