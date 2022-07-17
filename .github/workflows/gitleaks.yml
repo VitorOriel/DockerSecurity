@@ -6,6 +6,9 @@ jobs:
   scan:
     name: gitleaks
     runs-on: ubuntu-latest
+    permissions:
+      # required for all workflows
+      security-events: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -14,3 +17,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           GITLEAKS_CONFIG: gitleaks.toml
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: gitleaks-results.sarif
+          category: gitleaks
