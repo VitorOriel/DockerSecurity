@@ -3,7 +3,7 @@ name: Docker Build
 on: push
 
 jobs:
-  build:
+  security:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -11,3 +11,5 @@ jobs:
       run: echo IMAGE_REPOSITORY=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]') >> $GITHUB_ENV
     - name: Build a Docker image
       run: docker build -t ${{ env.IMAGE_REPOSITORY }}:latest .
+    - name: Run Docker image
+      run: docker run -d ${{ env.IMAGE_REPOSITORY }}:latest -e MYSQL_ROOT_PASSWORD=a029d0df84eb5549c641e04a9ef389e5
