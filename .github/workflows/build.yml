@@ -12,4 +12,4 @@ jobs:
     - name: Build a Docker image
       run: docker build -t ${{ env.IMAGE_REPOSITORY }}:latest .
     - name: Run Docker image
-      run: docker run --name mysql-db -d ${{ env.IMAGE_REPOSITORY }}:latest -e MYSQL_ROOT_PASSWORD=1a029d0df84eb5549c641e04a9ef389e5
+      run: docker run --name mysql-db -d ${{ env.IMAGE_REPOSITORY }}:latest -e MYSQL_ROOT_PASSWORD=a029d0df84eb5549c641e04a9ef389e5
