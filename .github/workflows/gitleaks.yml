@@ -20,7 +20,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           GITLEAKS_CONFIG: gitleaks.toml
 
-      - run: ls -la
+      - name: Check ls
+        run: ls -la
 
       - name: Upload SARIF file
         if: failure() && steps.gitleaks.outcome != 'success'
