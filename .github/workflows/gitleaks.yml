@@ -20,6 +20,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
           GITLEAKS_CONFIG: gitleaks.toml
 
+      - run: ls -la
+
       - name: Upload SARIF file
         if: failure() && steps.gitleaks.outcome != 'success'
         uses: github/codeql-action/upload-sarif@v2
